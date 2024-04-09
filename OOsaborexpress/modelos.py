@@ -1,5 +1,5 @@
 from avaliacoes import Avaliacao
-
+from cardapio.Item_cardapio import Cardapio
 
 
 
@@ -13,6 +13,9 @@ class Restaurante:
         self._ativo = True
         Restaurante.restaurantes.append(self)
         self._avaliacao = []
+        self._cardapio = []
+
+
 
     def __str__(self):
         return f'{self.nome} | {self.categoria} | {self.ativo}'
@@ -45,6 +48,35 @@ class Restaurante:
         media = round(media_notas / quantidade_notas, 1)
         return media
     
+
+
+    def adcionar_no_cardapio(self, item):
+        if isinstance(item,Cardapio):
+            self._cardapio.append(item)
+
+
+
+    @property
+    def listar_cardapio(self):
+        print(f"Cardapio do Restaurante {self.nome}")
+        for i,item in enumerate(self._cardapio,start=1):
+            if hasattr(item, "descricao"):
+                msg_prato  = (f" {i} Nome: {item._nome.ljust(22)} | Preço: R$ {str(item._preco).ljust(22)} | Descrição: {item.descricao.ljust(22)}")
+                print(msg_prato)
+            else:
+                msgbebida  = (f"Nome: {item._nome.ljust(22)} | Preço: R$ {str(item._preco).ljust(22)} | Tamanho: {item.tamanho.ljust(22)}")
+                print(msgbebida)
+
+
+    # def adcionar_bebidas_restaurante(self,bebida):
+    #     self._cardapio.append(bebida)
+
+
+    # def adcionar_prato_restaurante(self,prato):
+    #     self._cardapio.append(self,prato)
+
+
+
 
 
 # pizza = Restaurante("pizzelli", "Italizana")

@@ -1,3 +1,8 @@
+from avaliacoes import Avaliacao
+
+
+
+
 class Restaurante:
     restaurantes = []
 
@@ -7,6 +12,7 @@ class Restaurante:
         self.categoria = categoria.title()
         self._ativo = True
         Restaurante.restaurantes.append(self)
+        self._avaliacao = []
 
     def __str__(self):
         return f'{self.nome} | {self.categoria} | {self.ativo}'
@@ -14,19 +20,31 @@ class Restaurante:
     
     def listar_restaurantes():
 
-        x = (f"{'Nome'.ljust(25)} | {'Categoria'.ljust(25)} | {'Status'.ljust(25)}")
+        x = (f"{'Nome'.ljust(25)} | {'Categoria'.ljust(25)} | {'Média Valiação: '.ljust(25)} | {'Status'.ljust(25)}")
         print(x)
         tam = len(x)
         print(f"-" * tam)
         for restaurante in Restaurante.restaurantes:
-            print(f"{restaurante.nome.ljust(25)} | {restaurante.categoria.ljust(25)} | {restaurante.ativo.ljust(25)}")
+            print(f"{restaurante.nome.ljust(25)} | {restaurante.categoria.ljust(25)} | {str(restaurante.media_avaliacoes).ljust(25)} | {restaurante.ativo.ljust(25)}")
 
     @property
     def ativo(self):
         return "✅" if self._ativo == True else "☐"
 
+  
+    def receber_avaliacao(self, cliente, nota):
+        avaliacao = Avaliacao(cliente,nota)
+        self._avaliacao.append(avaliacao)
 
-
+    @property
+    def media_avaliacoes(self):
+        if not self._avaliacao:
+            return 0
+        media_notas = sum(avaliacao._nota for avaliacao in self._avaliacao)
+        quantidade_notas = len(self._avaliacao)
+        media = round(media_notas / quantidade_notas, 1)
+        return media
+    
 
 
 # pizza = Restaurante("pizzelli", "Italizana")

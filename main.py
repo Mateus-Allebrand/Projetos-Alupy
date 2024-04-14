@@ -7,6 +7,11 @@ print(url)
 # print(texto)
 # print(texto02)
 
+
+parametros_url = url.find("?")
+
+print(url[parametros_url+1:])
+
 nome = "Gabriel saldanha"
 
 

@@ -1,9 +1,6 @@
 import re
 
 
-
-
-
 class ExtratorURL:
     def __init__(self, url):                                # existe esses metodos que possuem __ antes e __                                                     
         self.url = self.sanitiza_url(url)                   # depois, são chamados de metodos especiais
@@ -58,12 +55,31 @@ class ExtratorURL:
         return self.url
 
 url = "bytebank.com/cambio?quantidade=100&moedaOrigem=real&moedaDestino=dolar"
-print(len(url))
+
+
+
+
+XUrl = ExtratorURL(url)
+
+print(len XUrl)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 # extrator_url = ExtratorURL(url)
 # valor_quantidade = extrator_url.get_valor_parametro("quantidade")
 # print(valor_quantidade)
-
-
-
-estrator_url0 = 

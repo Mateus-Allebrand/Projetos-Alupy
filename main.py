@@ -36,17 +36,14 @@ padrao = re.compile("[0123456789][0123456789][0123456789][0123456789][0123456789
 
 
 
-
-
-
-busca = padrao.search(endereco)
+# busca = padrao.search(endereco)
 
 
 
 
-if busca:
-    cep = busca.group()
-    print(cep)
+# if busca:
+#     cep = busca.group()
+#     print(cep)
 
 
 
@@ -56,3 +53,9 @@ if busca:
 # busca de uma padrão em uma certa string 
 # e se encontrar esse padrão 
 # caso a busca retorne alguma coisa podemos estrair do objeto match o valor de retorno
+
+
+
+nome = "Mateus"
+
+print(nome)

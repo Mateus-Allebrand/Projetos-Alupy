@@ -51,26 +51,48 @@ class ExtratorURL:
         return self.url == other.url
 
 
-    def __str__(self) -> str:
-        return self.url
+    # def __str__(self) -> str:
+    #     return self.url
 
 url = "bytebank.com/cambio?quantidade=100&moedaOrigem=real&moedaDestino=dolar"
 
 
 
 
-XUrl = ExtratorURL(url)
-
-print(len XUrl)
-
+estrator_url = ExtratorURL(url)
+estrator_url2 = ExtratorURL(url)
 
 
+print("O tamano da minha URL é: ",len(estrator_url))
+
+print(estrator_url == estrator_url2) # Esta me retornando => False
+                                     # pois por baixo dos panos o que acontece é isso:
+                                     # estrator_url.__eq__(estrator_url2)
+                                     # ele esta comparando o endereço de memória entre esses dois objetos
+                                     # que obviamente não é o mesmo
+                                     # Como solução, tenho que achar uma forma de comparar os atributos dessa objeto
+
+     
+# def __eq__(self, other):           # aqui no caso, o __eq__ recebe como argumento esse other
+#     return self.url == other.url   # esse other no caso, é o objeto a direita da minha comparação => obj a esquerda ==obj a direita
+                                     # com essa função: resolverá o problema, pois estou comparando os atributos dos objetos
+                                     # def __eq__(self, other):          
+                                     #     return self.url == other.url
 
 
 
+# if estrator_url == estrator_url2:
+#     print(f"{estrator_url} é igual a {estrator_url2}")
+
+# else:
+#     print(f"{estrator_url} e {estrator_url2} Não são iguais")
 
 
 
+#com o metodo id(), eu consigo ver o endereço de memória dos objetos
+
+print(id(estrator_url))
+print(id(estrator_url2))
 
 
 
